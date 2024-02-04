@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-var dbname = "GismongoDB"
-var collname = "Postgis"
+var dbname = "gis"
+var collname = "gis"
 
 func TestGeoIntersects(t *testing.T) {
 	mconn := SetConnection("MONGOSTRING", dbname)
@@ -37,29 +37,29 @@ func TestGeoWithin(t *testing.T) {
 }
 
 func TestNear(t *testing.T) {
-	mconn := SetConnection2dsphere("MONGOSTRING", "GismongoDB", "Postgis")
+	mconn := SetConnection2dsphere("MONGOSTRING", "gis", "gis")
 	coordinates := Point{
 		Coordinates: []float64{
 			107.90230814756461, -7.212792294268141,
 		},
 	}
-	datagedung := Near(mconn, "Postgis", coordinates)
+	datagedung := Near(mconn, "gis", coordinates)
 	fmt.Println(datagedung)
 }
 
 func TestNearSphere(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "GismongoDB")
+	mconn := SetConnection("MONGOSTRING", "gis")
 	coordinates := Point{
 		Coordinates: []float64{
 			107.90357575285924, -7.213350872053013,
 		},
 	}
-	datagedung := NearSphere(mconn, "Postgis", coordinates)
+	datagedung := NearSphere(mconn, "gis", coordinates)
 	fmt.Println(datagedung)
 }
 
 func TestBox(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "GismongoDB")
+	mconn := SetConnection("MONGOSTRING", "gis")
 	coordinates := Polyline{
 		Coordinates: [][]float64{
 			{107.90212716477299, -7.213924382944427},
