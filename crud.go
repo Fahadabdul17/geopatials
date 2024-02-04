@@ -1,4 +1,4 @@
-package geopatials
+package geopatials 
 
 import (
 	"os"
