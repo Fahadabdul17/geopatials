@@ -146,12 +146,12 @@ func DocExists[T any](db *mongo.Database, collname string, filter bson.M, doc T)
 	return err == nil
 }
 
-func GetGeoIntersectsDoc(db *mongo.Database, collname string, coordinates Point) (result string) {
+func GetGeoIntersectsDoc(db *mongo.Database, collname string, coordinates Polygon) (result string) {
 	filter := bson.M{
 		"geometry": bson.M{
 			"$geoIntersects": bson.M{
 				"$geometry": bson.M{
-					"type":        "Point",
+					"type":        "Polygon",
 					"coordinates": coordinates.Coordinates,
 				},
 			},
